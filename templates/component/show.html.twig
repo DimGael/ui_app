@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Component - {{ component.name }}{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>{{ component.name }}</h1>
+
+        <div class="code_window">{{ component.htmlcode | raw }}</div>
+
+        <div>
+            <label>HTML Code
+                <textarea rows="10" cols="200" class="show_code">{{ component.htmlcode }}</textarea>
+            </label>
+        </div>
+
+        <div>
+            <label>AI Assist.
+                <textarea rows="3" cols="100" id="aiprompt" placeholder="Ask for anything to update !"></textarea>
+            </label>
+            <input type="button" value="Send prompt" id="modify_btn"/>
+        </div>
+    </section>
+
+    <a href="{{ path('app_component_index') }}">back to list</a>
+
+    <a href="{{ path('app_component_edit', {'id': component.id}) }}">edit</a>
+
+    {{ include('component/_delete_form.html.twig') }}
+{% endblock %}
