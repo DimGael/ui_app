@@ -20,6 +20,6 @@
 ###< symfony/asset-mapper ###
 
 ### phpstorm
-.idea
+.idea/
 
 .env
