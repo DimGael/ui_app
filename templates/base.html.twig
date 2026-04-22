@@ -1,24 +1,176 @@
 <!DOCTYPE html>
 <html lang="eng">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BigBricks.io{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 
-        {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphpHotReload %}
+    {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+    {% if frankenphpHotReload %}
         <meta name="frankenphp-hot-reload:url" content="{{ frankenphpHotReload }}">
         <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% endif %}
+</head>
+<body>
+<header class="sticky top-0 z-50 header-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between gap-8">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 no-underline flex-shrink-0">
+            <div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
+                <svg viewBox="0 0 16 16" fill="none" class="w-4 h-4">
+                    <rect x="1" y="1" width="6" height="6" rx="1.5" fill="white"/>
+                    <rect x="9" y="1" width="6" height="6" rx="1.5" fill="white" opacity="0.6"/>
+                    <rect x="1" y="9" width="6" height="6" rx="1.5" fill="white" opacity="0.6"/>
+                    <rect x="9" y="9" width="6" height="6" rx="1.5" fill="white" opacity="0.3"/>
+                </svg>
+            </div>
+            <span class="logo-text font-extrabold text-xl tracking-tight text-slate-900">
+        bigbricks<span class="text-blue-600">.io</span>
+      </span>
+        </a>
+
+        <!-- Nav -->
+        <nav class="flex items-center gap-1">
+            <a href="{{ path('app_component_index') }}"
+               class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-900 hover:bg-slate-100 transition-colors">Bricks</a>
+            <a href="/styles"
+               class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors">Styles</a>
+            <a href="/docs"
+               class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors">Docs</a>
+            <a href="/pricing"
+               class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors">Pricing</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-2.5 flex-shrink-0">
+            <a href="/login"
+               class="px-4 py-2 rounded-lg text-sm font-medium text-slate-900 border border-slate-200 hover:bg-slate-50 transition-colors">
+                Sign in
+            </a>
+            <a href="/register"
+               class="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all hover:-translate-y-px hover:shadow-lg hover:shadow-blue-200">
+                Get started for free
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+</header>
+
+{% block body %}{% endblock %}
+
+<footer class="bg-slate-900 text-slate-400 mt-20">
+    <div class="max-w-6xl mx-auto px-8 pt-14 pb-8">
+
+        <!-- Grid -->
+        <div class="grid grid-cols-4 gap-12 pb-12 border-b border-slate-800">
+
+            <!-- Brand -->
+            <div class="col-span-1">
+                <a href="/" class="flex items-center gap-2 mb-4 no-underline">
+                    <div class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <svg viewBox="0 0 16 16" fill="none" class="w-4 h-4">
+                            <rect x="1" y="1" width="6" height="6" rx="1.5" fill="white"/>
+                            <rect x="9" y="1" width="6" height="6" rx="1.5" fill="white" opacity="0.6"/>
+                            <rect x="1" y="9" width="6" height="6" rx="1.5" fill="white" opacity="0.6"/>
+                            <rect x="9" y="9" width="6" height="6" rx="1.5" fill="white" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text font-extrabold text-lg tracking-tight text-white">
+            bigbricks<span class="text-blue-500">.io</span>
+          </span>
+                </a>
+                <p class="text-sm text-slate-500 leading-relaxed max-w-[220px]">
+                    Composants Tailwind CSS avec IA intégrée pour les adapter à votre besoin.
+                </p>
+                <!-- Social -->
+                <div class="flex gap-2 mt-5">
+                    <a href="#"
+                       class="w-8 h-8 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors">
+                        <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                        </svg>
+                    </a>
+                    <a href="#"
+                       class="w-8 h-8 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors">
+                        <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Produit -->
+            <div>
+                <h4 class="logo-text font-bold text-xs text-white uppercase tracking-widest mb-4">Produit</h4>
+                <ul class="flex flex-col gap-2.5">
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Composants</a>
+                    </li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Styles</a>
+                    </li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">IA &
+                            Modification</a></li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Tarifs</a>
+                    </li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Ressources -->
+            <div>
+                <h4 class="logo-text font-bold text-xs text-white uppercase tracking-widest mb-4">Ressources</h4>
+                <ul class="flex flex-col gap-2.5">
+                    <li><a href="#"
+                           class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Documentation</a></li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Guidelines</a>
+                    </li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Tailwind
+                            CSS</a></li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Légal -->
+            <div>
+                <h4 class="logo-text font-bold text-xs text-white uppercase tracking-widest mb-4">Légal</h4>
+                <ul class="flex flex-col gap-2.5">
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Mentions
+                            légales</a></li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">CGU</a></li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Confidentialité</a>
+                    </li>
+                    <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Licences</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="flex items-center justify-between gap-4 flex-wrap pt-7">
+            <p class="text-xs text-slate-600">© 2025 Bigbricks.io — Tous droits réservés.</p>
+            <div
+                class="flex items-center gap-1.5 bg-slate-800 border border-slate-700 rounded-full px-3 py-1.5 font-mono-dm text-xs text-slate-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-blink-fast"></span>
+                Tous les systèmes opérationnels
+            </div>
+        </div>
+
+    </div>
+</footer>
+</body>
 </html>

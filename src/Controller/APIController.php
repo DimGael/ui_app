@@ -18,6 +18,7 @@ final class APIController extends AbstractController
     )
     {}
 
+    // TODO : Delete this route
     #[Route('api/test', name: 'api_test')]
     public function testingGemini(): \Symfony\Component\HttpFoundation\Response
     {
