@@ -1,15 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}UI App{% endblock %}
+{% block title %}Bigbricks.io - Home{% endblock %}
 
 {% block body %}
-    <main class="example-wrapper">
-        <h1>UI App (Name to be defined)</h1>
+    <!-- First hero Section -->
+    <section class="relative flex flex-col items-center justify-center text-center px-10 py-20 overflow-hidden bg-white">
 
-        <nav>
-            <ul>
-                <li><a href="{{ path('app_component_index') }}">Component</a></li>
-            </ul>
-        </nav>
-    </main>
+        <!-- Eyebrow -->
+        <div class="inline-flex items-center gap-2 text-xs font-medium text-blue-600 tracking-widest uppercase mb-9 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-300"></span>
+            Tailwind CSS Component Library
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-[clamp(56px,7vw,96px)] leading-none tracking-tight text-slate-900 mb-7 max-w-4xl">
+            The bricks that build<br>
+            <em class="italic text-blue-600">great websites.</em>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-base font-light leading-relaxed text-slate-500 max-w-lg mb-11">
+            Production-ready HTML & Tailwind CSS components. No dependencies, no framework lock-in — just clean, flexible building blocks.
+        </p>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+            <a href="#" class="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg px-6 py-3 transition-all hover:-translate-y-0.5">
+                Browse components →
+            </a>
+            <a href="#" class="text-sm font-normal text-blue-600 bg-transparent hover:bg-blue-50 border border-blue-200 hover:border-blue-300 rounded-lg px-5 py-3 transition-all">
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+    <!-- End of First hero -->
+
 {% endblock %}
