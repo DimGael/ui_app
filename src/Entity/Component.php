@@ -20,6 +20,14 @@ class Component
     #[ORM\Column(type: Types::TEXT)]
     private ?string $htmlcode = null;
 
+    #[ORM\ManyToOne(inversedBy: 'components')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Style $style = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Components')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +53,30 @@ class Component
     public function setHtmlcode(string $htmlcode): static
     {
         $this->htmlcode = $htmlcode;
+
+        return $this;
+    }
+
+    public function getStyle(): ?Style
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?Style $style): static
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
