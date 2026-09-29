@@ -12,7 +12,11 @@ class Component
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    public ?int $id = null {
+        get {
+            return $this->id;
+        }
+    }
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -27,11 +31,6 @@ class Component
     #[ORM\ManyToOne(inversedBy: 'Components')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Component;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -38,6 +39,9 @@ class ComponentCrudController extends AbstractCrudController
                 break;
             }
         }
+
+        $fields[] = AssociationField::new('category');
+        $fields[] = AssociationField::new('style');
 
         return $fields;
     }
