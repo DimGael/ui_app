@@ -13,11 +13,7 @@ class Style
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null {
-        get {
-            return $this->id;
-        }
-    }
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -35,6 +31,14 @@ class Style
     public function __construct()
     {
         $this->components = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getName(): ?string
@@ -69,5 +73,10 @@ class Style
         }
 
         return $this;
+    }
+
+    public function __toString():string
+    {
+        return $this->getName() ?? '';
     }
 }

@@ -71,7 +71,7 @@ final class ComponentController extends AbstractController
     #[Route('/{id}', name: 'app_component_delete', methods: ['POST'])]
     public function delete(Request $request, Component $component, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$component->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'. $component->id, $request->getPayload()->getString('_token'))) {
             $entityManager->remove($component);
             $entityManager->flush();
         }
